@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Switch, Route } from 'react-router-dom';
+import Login from './page/login/Login';
+import User from './page/user/User';
+import Map from './page/map/Map';
+import BackToPage from './page/back-to-page/BackToPage';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BackToPage />
+      <Switch>
+        <Route exact path='/'>
+          <Login />
+        </Route>
+        <Route exact path='/user'>
+          <User />
+        </Route>
+        <Route exact path='/map/:lat/:lng/:name/:address'>
+          <Map />
+        </Route>
+      </Switch>
+    </>
   );
 }
-
 export default App;
